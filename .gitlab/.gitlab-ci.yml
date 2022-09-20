@@ -17,7 +17,7 @@ npm:
         files:
           - package.json
       paths:
-        - node_modules
+        - node_modules/
         - package-lock.json
       policy: pull-push
     - key: $CI_PIPELINE_ID
@@ -37,7 +37,7 @@ audit:
         files:
           - package.json
       paths:
-        - node_modules
+        - package-lock.json
       policy: pull
   script:
     - AUDIT=$(npm audit)
