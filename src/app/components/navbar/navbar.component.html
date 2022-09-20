@@ -1,0 +1,16 @@
+<mat-toolbar>
+	<mat-toolbar-row>
+		<div>
+			<a class="navbar-brand d-flex align-items-center" routerLink="/">
+				<div class="px-2">291st Joint Task Force</div>
+			</a>
+		</div>
+		<div class="flex-grow-1"></div>
+		<div *ngIf="!hamburger">
+		</div>
+		<button *ngIf="hamburger" mat-icon-button class="mr-3">
+			<mat-icon (click)="hamburgerClick.emit()">menu</mat-icon>
+		</button>
+	</mat-toolbar-row>
+</mat-toolbar>
+<div class="navbar-spacing"><!-- Spacing --></div>
