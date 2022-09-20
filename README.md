@@ -1,9 +1,7 @@
 # 291st JTF
-[Clan page](https://291st.ca) for the 291st Joint Task Force 
+[Clan page](https://291st.ca) for the 291st Joint Task Force
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.2.
-
-
 
 ## Table of Contents
 [[_TOC_]]
@@ -25,8 +23,8 @@ The project can either be run using NPM or Docker. NPM is recommended for develo
 <details>
 <summary>Docker</summary>
 
-1. Build the docker image: `docker build -t legio-xxx:<TAG> .`
-2. Start the new image: `docker run -p 4200:80 legio-xxx:<TAG>`
+1. Build the docker image: `docker build -t 291st:<TAG> .`
+2. Start the new image: `docker run -p 4200:80 291st:<TAG>`
 
 </details>
 
@@ -41,9 +39,8 @@ npm run start
 npm run build:prod
 
 # Build docker image
-docker build -t legio-xxx:<TAG>
+docker build -t 291st:<TAG>
 
 # Run docker image
-docker run -p 4200:80 legio-xxx:<TAG>
+docker run -p 4200:80 291st:<TAG>
 ```
-
