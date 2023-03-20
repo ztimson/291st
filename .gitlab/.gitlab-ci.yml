@@ -7,14 +7,10 @@ stages:
 
 npm:
   stage: build
-  artifacts:
-    paths:
-      - dist
-    expire_in: 1 week
   cache:
     - key:
         files:
-          - package.json
+          - package-lock.json
       paths:
         - node_modules
       policy: pull-push
@@ -23,26 +19,33 @@ npm:
         - dist
       policy: push
   script:
-    - npm i
+    - npm install
     - npm run build
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 week
   rules:
     - if: $CI_COMMIT_BRANCH
 
 audit:
   stage: test
-  cache: [ ]
+  cache:
+    - key:
+        files:
+          - package-lock.json
+      paths:
+        - node_modules
+      policy: pull
   script:
-    - AUDIT=$(npm audit)
-    - echo "vulnerabilities_high $(echo $AUDIT | grep -oE '[0-9]+ high' | grep -oE '[0-9]+' || echo 0)" > metrics.txt
-    - echo "vulnerabilities_medium $(echo $AUDIT | grep -oE '[0-9]+ moderate' | grep -oE '[0-9]+' || echo 0)" >> metrics.txt
-    - echo "vulnerabilities_low $(echo $AUDIT | grep -oE '[0-9]+ low' | grep -oE '[0-9]+' || echo 0)" >> metrics.txt
-    - echo "$AUDIT"
+    - echo "vulnerabilities_high $(npm audit | grep -oE '[0-9]+ high' | grep -oE '[0-9]+' || echo 0)" > metrics.txt
+    - echo "vulnerabilities_medium $(npm audit | grep -oE '[0-9]+ moderate' | grep -oE '[0-9]+' || echo 0)" >> metrics.txt
+    - echo "vulnerabilities_low $(npm audit | grep -oE '[0-9]+ low' | grep -oE '[0-9]+' || echo 0)" >> metrics.txt
   artifacts:
     reports:
       metrics: metrics.txt
   rules:
     - if: $CI_COMMIT_BRANCH
-  allow_failure: true
 
 registry:
   stage: deploy
