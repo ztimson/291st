@@ -1,12 +1,16 @@
 import {NgModule} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 export const MATERIAL_MODULES = [
 	MatButtonModule,
 	MatIconModule,
-	MatToolbarModule
+	MatListModule,
+	MatTabsModule,
+	MatTooltipModule,
 ];
 
 @NgModule({

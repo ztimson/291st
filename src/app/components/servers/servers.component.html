@@ -1,0 +1,21 @@
+<div *ngFor="let s of servers">
+	<div class="d-flex p-2">
+		<div class="flex-shrink-1 align-self-center">
+			<img *ngIf="s.icon" [src]="s.icon">
+			<mat-icon *ngIf="!s.icon">dns</mat-icon>
+		</div>
+		<div class="d-flex flex-column flex-grow-1">
+			<div mat-line>{{s.name}}</div>
+			<div mat-line class="text-muted">{{s.url}}</div>
+			<div *ngIf="s.mods" mat-line><a [href]="s.mods.link">{{s.mods.num}} mods</a></div>
+		</div>
+		<div class="d-flex flex-shrink-1 justify-content-end">
+			<mat-icon [style.visibility]="s.private ? 'visible' : 'hidden'" class="text-muted" matTooltip="Private" style="font-size: 14px">lock</mat-icon>
+			<div style="width: 12px; height: 12px; border-radius: 6px;"
+			     [style.background-color]="s.online ? '#00FF00' : '#FF0000'"
+			     [matTooltip]="s.online ? 'Online' : 'Offline'">
+			</div>
+		</div>
+	</div>
+	<mat-divider></mat-divider>
+</div>

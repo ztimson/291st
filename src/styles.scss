@@ -2,18 +2,18 @@
 @include mat.core();
 
 // hue. Available color palettes: https://material.io/design/color/
-$LegioXXX-primary: mat.define-palette(mat.$red-palette, 900);
-$LegioXXX-accent: mat.define-palette(mat.$indigo-palette, 900);
-$LegioXXX-warn: mat.define-palette(mat.$orange-palette, 500);
-$LegioXXX-theme: mat.define-dark-theme((
+$JTF-primary: mat.define-palette(mat.$red-palette, 900);
+$JTF-accent: mat.define-palette(mat.$indigo-palette, 900);
+$JTF-warn: mat.define-palette(mat.$orange-palette, 500);
+$JTF-theme: mat.define-dark-theme((
   color: (
-    primary: $LegioXXX-primary,
-    accent: $LegioXXX-accent,
-    warn: $LegioXXX-warn,
+    primary: $JTF-primary,
+    accent: $JTF-accent,
+    warn: $JTF-warn,
   )
 ));
 
-@include mat.all-component-themes($LegioXXX-theme);
+@include mat.all-component-themes($JTF-theme);
 
 @import '~bootstrap/dist/css/bootstrap-utilities.min.css';
 
@@ -39,16 +39,19 @@ body {
 	color: #fff;
 	font-family: Roboto, sans-serif;
 	margin: 0;
-	overflow: hidden;
 }
 
 a, a:visited {
 	text-decoration: none;
-	color: rgba(255, 255, 255, 0.6);
+	color: #3c0000;
 }
-a:hover, a:visited:hover { color: #b10000; }
+a:hover, a:visited:hover { color: #550000; }
 
 .fill {
 	height: 0;
 	min-height: calc(100vh - 64px);
+}
+
+.stencil {
+	font-family: Saira Stencil One !important;
 }

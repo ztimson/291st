@@ -1,9 +1,38 @@
-<section class="fill background d-flex flex-column flex-md-row">
-	<div class="flex-grow-1 p-3" style="flex-basis: 0">
-		<iframe src="https://discordapp.com/widget?id=399625240927404033&theme=dark" width="100%" height="100%" allowtransparency="true" frameborder="0" style="min-height: 500px" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-	</div>
-	<div class="flex-grow-1 p-3" style="flex-basis: 0">
-	</div>
-	<div class="flex-grow-1 p-3" style="flex-basis: 0">
-	</div>
-</section>
+<div class="h-100 d-none d-sm-flex align-items-center justify-content-center" style="background: #000 url('/assets/img/helicopter.gif'); background-size: cover;">
+	<img src="/assets/img/logo.png" width="auto" height="60%" style="max-width: 60%">
+</div>
+<div class="d-flex d-sm-none align-items-center justify-content-center" style="background: #000 url('/assets/img/helicopter.gif'); background-size: cover;">
+	<img src="/assets/img/logo.png" width="auto" height="60%" style="max-width: 60%">
+</div>
+
+<div style="position: absolute; top: 2rem; left: 2rem;">
+	<h1 class="mb-1 stencil" style="font-size: 3rem">
+		291st
+		<span class="d-none d-sm-inline">Joint Task Force</span>
+		<span class="d-inline d-sm-none">JTF</span>
+	</h1>
+	<h2 class="d-none d-sm-block stencil">"Putting the Damned to Rest"</h2>
+</div>
+
+<div class="content">
+	<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="h-100" style="min-height: 400px">
+		<mat-tab class="h-100">
+			<ng-template mat-tab-label>
+				<mat-icon class="me-2">discord</mat-icon>
+				Discord
+			</ng-template>
+			<app-discord></app-discord>
+		</mat-tab>
+		<mat-tab>
+			<ng-template mat-tab-label>
+				<mat-icon class="me-2">dns</mat-icon>
+				Servers
+			</ng-template>
+			<div class="d-flex justify-content-center">
+				<div class="pt-4" style="width: 300px">
+					<app-servers></app-servers>
+				</div>
+			</div>
+		</mat-tab>
+	</mat-tab-group>
+</div>
