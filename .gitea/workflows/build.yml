@@ -17,7 +17,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: node_modules
-          key: ${{ hashFile('package-lock.json') }}
+          key: ${{ hashFiles('**/package-lock.json') }}
   Build_Node:
     runs-on: Docker
     container:
@@ -27,6 +27,6 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: node_modules
-          key: ${{ hashFile('package-lock.json') }}
+          key: ${{ hashFiles('**/package-lock.json') }}
       - name: Build
         run: npm run build
