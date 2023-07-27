@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   Explore-Gitea-Actions:
-    runs-on: docker
+    runs-on: Docker
     container:
       image: alpine
     steps:
