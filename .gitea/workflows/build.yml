@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   Example:
-	runs-on: docker
 	image: alpine
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ gitea.event_name }} event."
