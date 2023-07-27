@@ -3,19 +3,29 @@ run-name: ${{ gitea.actor }} is building
 on: [push]
 
 jobs:
-  Explore-Gitea-Actions:
+  Dependencies_NPM:
     runs-on: Docker
     container:
-      image: alpine
+      image: node:16
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ gitea.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by Gitea!"
-      - run: echo "🔎 The name of your branch is ${{ gitea.ref }} and your repository is ${{ gitea.repository }}."
-      - name: Check out repository code
+		
+      - name: Checkout Repository
         uses: actions/checkout@v3
-      - run: echo "💡 The ${{ gitea.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ gitea.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+		
+      - name: Install Dependencies
+        run: npm i
+	  
+	  - name: Upload Artifacts
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: node_modules
+          path: node_modules
+		  
+  Build_Node:
+	runs-on: Docker
+	container:
+	  image: node:16
+    steps:
+		- name: Build
+		- run: npm run build
