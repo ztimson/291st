@@ -10,20 +10,15 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Create Hash
-        uses: actions/go-hashfiles@v0.0.1
-        id: get-hash
-        with: 
-          patterns: package-lock.json
       - name: Restore Cached Dependencies
         uses: actions/cache/restore@v3
         with:
-          path: node_modules    
-          key: npm-${{ steps.get-hash.outputs.hash }}
+          path: node_modules
+          key: node_modules
       - name: Install Dependencies
         run: npm i
       - name: Cache Dependencies
         uses: actions/cache@v3
         with:
-          path: node_modules    
-          key: npm-${{ steps.get-hash.outputs.hash }}
+          path: node_modules
+          key: node_modules
