@@ -18,15 +18,3 @@ jobs:
           path: |
             node_modules    
           key: npm-${{ hashFiles('package-lock.json') }}
-  Build_Node:
-    runs-on: Docker
-    container:
-      image: node:16
-    steps:
-      - name: Restore Dependencies
-        uses: actions/cache/restore@v3
-        with:
-          - ath: node_modules
-          - key: npm-${{ hashFiles('package-lock.json') }}
-      - name: Build
-        run: npm run build
