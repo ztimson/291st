@@ -13,20 +13,19 @@ jobs:
       - name: Install Dependencies
         run: npm i
       - name: Cache Dependencies
-        if: success()
         uses: actions/cache@v3
         with:
           path: node_modules
-          key: ${{ hashFiles('**/package-lock.json') }}
+          key: npm-${{ hashFiles('package-lock.json') }}
   Build_Node:
     runs-on: Docker
     container:
       image: node:16
     steps:
-      - name: Restore Cached Dependencies
+      - name: Restore Dependencies
         uses: actions/cache/restore@v3
         with:
-          path: node_modules
-          key: ${{ hashFiles('**/package-lock.json') }}
+          ath: node_modules
+          key: npm-${{ hashFiles('package-lock.json') }}
       - name: Build
         run: npm run build
