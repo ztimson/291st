@@ -8,13 +8,10 @@ jobs:
     container:
       image: node:16
     steps:
-		
       - name: Checkout Repository
         uses: actions/checkout@v3
-		
       - name: Install Dependencies
         run: npm i
-	  
 	  - name: Upload Artifacts
         if: success()
         uses: actions/upload-artifact@v1
