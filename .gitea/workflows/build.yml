@@ -12,17 +12,22 @@ jobs:
         uses: actions/checkout@v3
       - name: Install Dependencies
         run: npm i
-	  - name: Upload Artifacts
+	  - name: Cache Dependencies
         if: success()
-        uses: actions/upload-artifact@v1
+        uses: actions/cache@v3
         with:
-          name: node_modules
           path: node_modules
+          key: ${{ hashFile('package-lock.json') }}
 		  
   Build_Node:
 	runs-on: Docker
 	container:
 	  image: node:16
     steps:
+		- name: Restore Cached Dependencies
+          uses: actions/cache/restore@v3
+          with:
+            path: node_modules
+            key: ${{ hashFile('package-lock.json') }}
 		- name: Build
-		- run: npm run build
+		  run: npm run build
