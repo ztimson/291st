@@ -13,12 +13,12 @@ jobs:
       - name: Restore Cached Dependencies
         uses: actions/cache/restore@v3
         with:
-          path: node_modules
+          path: ./node_modules
           key: node_modules
       - name: Install Dependencies
-        run: npm i
+        run: npm ci
       - name: Cache Dependencies
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: ./node_modules
           key: node_modules
