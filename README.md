@@ -4,6 +4,8 @@
 
 ![Skull Sword and Globe Emblem](./src/assets/img/logo.png)
 
+This is the clan website for the "291st Joint Task Force"
+
 ## Table of Contents
 - [291st JTF](#291st-jtf)
   - [Table of Contents](#table-of-contents)
