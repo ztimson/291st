@@ -4,31 +4,59 @@ on: [push, workflow_dispatch]
 jobs:
   dependencies:
     name: Install dependencies
-    container: node:16
+    container: git.zakscode.com/ztimson/runner
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-      - name: Restore Cached Dependencies
+
+      - uses: actions/checkout@v3
+
+      - name: Restore node_modules
         uses: actions/cache/restore@v3
         with:
           path: ./node_modules
           key: node_modules
           restore-keys: node_modules
-      - name: Install Dependencies
+
+      - name: Install dependencies
         run: npm ci
-      - name: Cache Dependencies
+
+      - name: Cache node_modules
         uses: actions/cache@v3
         with:
           path: ./node_modules
           key: node_modules
           restore-keys: node_modules
-  Docker:
-    name: Push docker image
-    container: git.zakscode.com/ztimson/ubuntu-docker:latest
+
+  build:
+    needs: dependencies
+    container: git.zakscode.com/ztimson/runner
     steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Restore node_modules
+        uses: actions/cache/restore@v3
+        with:
+          path: ./node_modules
+          key: node_modules
+          restore-keys: node_modules
+
+      - name: Build sources
+        run: npm run build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist/
+
+  docker:
+	# needs: dependencies
+    name: Push docker image
+    container: git.zakscode.com/ztimson/runner
+    steps:
+
+      - uses: actions/checkout@v3
 
       - uses: ztimson/actions/docker@develop
         with:
-          image: ztimson/291st
-          registry_user: ztimson
           registry_pass: ${{secrets.deploy_token}}
