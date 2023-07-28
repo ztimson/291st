@@ -32,8 +32,8 @@ jobs:
     steps:
 
       - uses: ztimson/actions/docker@develop
-        shell: sh
         with:
+          entrypoint: /bin/sh
           image: 291st
         secrets:
           registry_user: ztimson
