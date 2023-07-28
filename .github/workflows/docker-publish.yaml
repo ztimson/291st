@@ -22,9 +22,6 @@ on:
 
 jobs:
   Build:
-    runs-on: Docker
-    container:
-      image: docker
     steps:
 
       - name: Login to registry
