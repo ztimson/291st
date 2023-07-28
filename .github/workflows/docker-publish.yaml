@@ -1,22 +1,24 @@
 name: Build & push docker image
 
-inputs:
-  registry:
-    required: false
-    type: string
-  image:
-    required: true
-    type: string
-  tag:
-    required: false
-    type: string
-secrets:
-  registry_user:
-    required: true
-    type: string
-  registry_pass:
-    required: true
-    type: string
+on:
+  workflow_call:
+    inputs:
+      registry:
+        required: false
+        type: string
+      image:
+        required: true
+        type: string
+      tag:
+        required: false
+        type: string
+    secrets:
+      registry_user:
+        required: true
+        type: string
+      registry_pass:
+        required: true
+        type: string
 
 jobs:
   Build:
