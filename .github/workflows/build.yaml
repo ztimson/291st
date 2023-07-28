@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   Dependencies:
-	name: Install NPM dependencies
+    name: Install NPM dependencies
     runs-on: Docker
     container:
       image: node:16
@@ -26,10 +26,15 @@ jobs:
           key: node_modules
           restore-keys: node_modules
   Docker:
-	name: Build & publish docker image
-	needs: Dependencies
-	runs-on: Docker
-	container:
-		image: docker
-	steps:
-		- uses: ./docker-publish.yaml
+    name: Build & publish docker image
+    needs: Dependencies
+    runs-on: Docker
+    container:
+      image: docker
+    steps:
+      - uses: ./docker-publish.yaml
+        with:
+          image: 291st
+        secrets:
+          registry_user: ztimson
+          registry_pass: zmNPG^5uCs%7MJUJ
