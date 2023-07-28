@@ -25,10 +25,15 @@ jobs:
           key: node_modules
           restore-keys: node_modules
   Docker:
-    needs: dependencies
-    uses: ztimson/actions/docker.yaml@develop
-    with:
-      image: 291st
-    secrets:
-      registry_user: ztimson
-      registry_pass: ${{secrets.deploy_token}}
+    name: Install dependencies
+    runs-on: Docker
+    container:
+      image: docker:latest
+    steps:
+
+      - uses: ztimson/actions/docker.yaml@develop
+        with:
+          image: 291st
+        secrets:
+          registry_user: ztimson
+          registry_pass: ${{secrets.deploy_token}}
