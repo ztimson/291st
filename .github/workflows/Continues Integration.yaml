@@ -27,6 +27,7 @@ jobs:
           restore-keys: node_modules
 
   build:
+	name: Build dev
     needs: dependencies
     container: git.zakscode.com/ztimson/runner
     steps:
@@ -44,9 +45,9 @@ jobs:
         run: npm run build
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: dist
+          name: build-dev
           path: dist/
 
   docker:
@@ -59,4 +60,6 @@ jobs:
 
       - uses: ztimson/actions/docker@develop
         with:
+          image: ztimson/test
+          registry_user: ztimson
           registry_pass: ${{secrets.deploy_token}}
