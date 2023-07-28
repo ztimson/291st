@@ -27,7 +27,7 @@ jobs:
           restore-keys: node_modules
 
   build:
-	name: Build dev
+    name: Build dev
     needs: dependencies
     container: git.zakscode.com/ztimson/runner
     steps:
