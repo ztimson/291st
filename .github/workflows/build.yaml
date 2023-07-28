@@ -3,7 +3,8 @@ run-name: ${{ gitea.actor }} is building
 on: [push]
 
 jobs:
-  Dependencies_NPM:
+  Dependencies:
+	name: Install NPM dependencies
     runs-on: Docker
     container:
       image: node:16
@@ -24,3 +25,11 @@ jobs:
           path: ./node_modules
           key: node_modules
           restore-keys: node_modules
+  Docker:
+	name: Build & publish docker image
+	needs: Dependencies
+	runs-on: Docker
+	container:
+		image: docker
+	steps:
+		- uses: ./docker-publish.yaml
