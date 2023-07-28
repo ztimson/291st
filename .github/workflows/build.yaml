@@ -30,8 +30,9 @@ jobs:
     needs: Dependencies
     runs-on: Docker
     container:
-      image: docker
+      image: node:16
     steps:
+
       - uses: ztimson/291st/.github/workflows/docker-publish.yaml@develop
         with:
           image: 291st
