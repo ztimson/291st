@@ -13,7 +13,7 @@ This is the clan website for the "291st Joint Task Force"
   - [Stack](#stack)
   - [Setup](#setup)
     - [Development](#development)
-	- [Production](#produciton)
+	- [Production](#production)
   - [Cheatsheet](#cheatsheet)
 
 ## Demo
@@ -29,7 +29,9 @@ This is the clan website for the "291st Joint Task Force"
 ## Setup
 <details>
 <summary>
-  <h3 style="display: inline">Development</h3>
+  <h3 id="development" style="display: inline">
+    Development
+  </h3>
 </summary>
 
 #### Prerequisites
@@ -43,7 +45,9 @@ This is the clan website for the "291st Joint Task Force"
 
 <details>
 <summary>
-  <h3 style="display: inline">Production</h3>
+  <h3 id="production" style="display: inline">
+    Production
+  </h3>
 </summary>
 
 #### Prerequisites
