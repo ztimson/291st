@@ -1,0 +1,42 @@
+name: Build & push docker image
+
+inputs:
+	registry:
+		required: false
+		type: string
+	image:
+		required: true
+		type: string
+	tag:
+		required: false
+		type: string
+secrets:
+	registry_user:
+		required: true
+		type: string
+	registry_pass:
+		required: true
+		type: string
+
+jobs:
+	Build:
+		runs-on: Docker
+		container:
+			image: docker
+		steps:
+			
+			- name: Login to registry
+			  run:|
+			    REGISTRY=$([ "${{inputs.registry}}" -n ] && echo "${{inputs.registry}}" || echo "${{github.server.url}}")
+				echo "${{secrets.registry_pass}}" | docker login -u "${{secrets.registry_user}}" --password-stdin "$REGISTRY"
+			
+			- uses: actions/checkout@v3
+			
+			- name: Create tag
+			  run: TAG=$([ "${{inputs.tag}}" -n ] && echo "${{inputs.tag}}" || [ "${{github.ref}}" == "refs/heads/develop" ] && echo "latest" || echo "${{github.ref.name}}" | sed -E "s/[_/]/-/g")
+			
+			- name: Build image
+			  run: docker build --no-cache -t "${{inputs.image}}:$TAG" .
+			
+			- name: Push image
+			  run: docker push "${{inputs.image}}:$TAG"
