@@ -4,9 +4,7 @@ on: [push, workflow_dispatch]
 jobs:
   dependencies:
     name: Install dependencies
-    runs-on: Docker
-    container:
-      image: node:16
+    container: node:16
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -26,7 +24,7 @@ jobs:
           restore-keys: node_modules
   Docker:
     name: Push docker image
-    container: docker:latest
+    container: ubuntu:latest
     steps:
 
       - uses: ztimson/actions/docker@develop
