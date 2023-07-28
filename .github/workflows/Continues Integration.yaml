@@ -32,7 +32,7 @@ jobs:
     steps:
 
       - uses: ztimson/actions/docker@develop
-	    shell: sh
+        shell: sh
         with:
           image: 291st
         secrets:
