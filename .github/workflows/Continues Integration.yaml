@@ -26,9 +26,7 @@ jobs:
           restore-keys: node_modules
   Docker:
     name: Push docker image
-    runs-on: Docker
-    container:
-      image: docker:latest
+    container: docker:latest
     steps:
 
       - uses: ztimson/actions/docker@develop
