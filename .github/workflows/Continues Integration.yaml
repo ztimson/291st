@@ -78,13 +78,19 @@ jobs:
           path: dist/
 
   docker:
-    # needs: dependencies
     name: Build docker image
+    needs: build-prod
     container: git.zakscode.com/ztimson/runner
     steps:
 
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Download production build
+        uses: actions/download-artifact@v3
+        with:
+          name: build-prod
+          path: dist
 
       - name: Build docker image
         uses: ztimson/actions/docker/build@develop
