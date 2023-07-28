@@ -25,10 +25,13 @@ jobs:
           key: node_modules
           restore-keys: node_modules
   Docker:
-    name: Install dependencies
+    name: Push docker image
     runs-on: Docker
     container:
-      image: ubuntu:latest
+      image: docker:latest
+	  volumes:
+		- /var/run/docker.sock:/var/run/docker.sock
+      options: --entrypoint /bin/sh
     steps:
 
       - uses: ztimson/actions/docker@develop
