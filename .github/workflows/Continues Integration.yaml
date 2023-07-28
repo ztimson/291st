@@ -29,8 +29,6 @@ jobs:
 
       - uses: ztimson/actions/docker@develop
         with:
-          entrypoint: /bin/sh
-          image: 291st
-        secrets:
+          image: ztimson/291st
           registry_user: ztimson
           registry_pass: ${{secrets.deploy_token}}
