@@ -31,7 +31,7 @@ jobs:
       image: docker:latest
     steps:
 
-      - uses: ztimson/actions/docker.yaml@develop
+      - uses: ztimson/actions/docker@develop
         with:
           image: 291st
         secrets:
