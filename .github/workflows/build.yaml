@@ -32,7 +32,7 @@ jobs:
     container:
       image: docker
     steps:
-      - uses: ./docker-publish.yaml
+      - uses: /.github/workflows/docker-publish.yaml
         with:
           image: 291st
         secrets:
