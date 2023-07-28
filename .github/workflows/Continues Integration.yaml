@@ -50,7 +50,7 @@ jobs:
           path: dist/
 
   docker:
-	# needs: dependencies
+    # needs: dependencies
     name: Push docker image
     container: git.zakscode.com/ztimson/runner
     steps:
