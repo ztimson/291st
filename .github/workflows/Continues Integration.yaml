@@ -7,7 +7,8 @@ jobs:
     container: git.zakscode.com/ztimson/runner
     steps:
 
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Restore node_modules
         uses: actions/cache/restore@v3
@@ -26,13 +27,14 @@ jobs:
           key: node_modules
           restore-keys: node_modules
 
-  build:
+  build-dev:
     name: Build dev
     needs: dependencies
     container: git.zakscode.com/ztimson/runner
     steps:
 
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Restore node_modules
         uses: actions/cache/restore@v3
@@ -42,12 +44,37 @@ jobs:
           restore-keys: node_modules
 
       - name: Build sources
-        run: npm run build
+        run: npm run build:dev
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build-dev
+          path: dist/
+
+  build-prod:
+    name: Build dev
+    needs: dependencies
+    container: git.zakscode.com/ztimson/runner
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Restore node_modules
+        uses: actions/cache/restore@v3
+        with:
+          path: ./node_modules
+          key: node_modules
+          restore-keys: node_modules
+
+      - name: Build sources
+        run: npm run build:prod
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-prod
           path: dist/
 
   docker:
@@ -56,10 +83,12 @@ jobs:
     container: git.zakscode.com/ztimson/runner
     steps:
 
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - uses: ztimson/actions/docker@develop
         with:
           image: ztimson/test
+          registry: git.zakscode.com
           registry_user: ztimson
           registry_pass: ${{secrets.deploy_token}}
