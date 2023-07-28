@@ -96,7 +96,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-prod
-          path: dist
+          path: dist.tar.gz
 
       - name: Extract artifacts
         run: tar -xzvf dist.tar.gz
