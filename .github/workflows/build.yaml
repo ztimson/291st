@@ -1,6 +1,6 @@
 name: Build
 run-name: ${{ gitea.actor }} is building
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   Dependencies:
@@ -26,16 +26,9 @@ jobs:
           key: node_modules
           restore-keys: node_modules
   Docker:
-    name: Build & publish docker image
-    needs: Dependencies
-    runs-on: Docker
-    container:
-      image: node:16
-    steps:
-
-      - uses: ztimson/291st/.github/workflows/docker-publish.yaml@develop
-        with:
-          image: 291st
-        secrets:
-          registry_user: ztimson
-          registry_pass: ${{secrets.deploy_token}}
+    uses: ztimson/291st/.github/workflows/docker-publish.yaml@develop
+    with:
+      image: 291st
+    secrets:
+      registry_user: ztimson
+      registry_pass: ${{secrets.deploy_token}}
