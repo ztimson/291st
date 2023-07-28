@@ -25,6 +25,7 @@ jobs:
           key: node_modules
           restore-keys: node_modules
   Docker:
+	needs: dependencies
     uses: ztimson/actions/docker.yaml@develop
     with:
       image: 291st
