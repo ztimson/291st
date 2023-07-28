@@ -29,10 +29,10 @@ jobs:
     runs-on: Docker
     container:
       image: docker:latest
-      options: --entrypoint /bin/sh
     steps:
 
       - uses: ztimson/actions/docker@develop
+	    shell: sh
         with:
           image: 291st
         secrets:
