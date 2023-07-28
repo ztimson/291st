@@ -32,9 +32,9 @@ jobs:
     container:
       image: docker
     steps:
-      - uses: /.github/workflows/docker-publish.yaml
+      - uses: ztimson/291st/.github/workflows/docker-publish.yaml
         with:
           image: 291st
         secrets:
           registry_user: ztimson
-          registry_pass: zmNPG^5uCs%7MJUJ
+          registry_pass: ${{secrets.deploy_token}}
