@@ -1,10 +1,9 @@
 name: Build
-run-name: ${{ gitea.actor }} is building
 on: [push, workflow_dispatch]
 
 jobs:
-  Dependencies:
-    name: Install NPM dependencies
+  dependencies:
+    name: Install dependencies
     runs-on: Docker
     container:
       image: node:16
@@ -26,7 +25,7 @@ jobs:
           key: node_modules
           restore-keys: node_modules
   Docker:
-    uses: ztimson/291st/.github/workflows/docker-publish.yaml@develop
+    uses: ztimson/actions/docker.yaml@develop
     with:
       image: 291st
     secrets:
