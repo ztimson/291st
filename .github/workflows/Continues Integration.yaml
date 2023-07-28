@@ -46,14 +46,12 @@ jobs:
       - name: Build sources
         run: npm run build:dev
 
-      - name: Compress artifacts
-        run: tar -czvf dist.tar.gz dist
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+      - name: Cache build artifacts
+        uses: actions/cache@v3
         with:
-          name: build-dev
-          path: dist.tar.gz
+          path: ./dist
+          key: dist-dev
+          restore-keys: dist-dev
 
   build-prod:
     name: Build production
@@ -74,14 +72,12 @@ jobs:
       - name: Build sources
         run: npm run build:prod
 
-      - name: Compress artifacts
-        run: tar -czvf dist.tar.gz dist
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+      - name: Cache build artifacts
+        uses: actions/cache@v3
         with:
-          name: build-prod
-          path: dist.tar.gz
+          path: ./dist
+          key: dist-prod
+          restore-keys: dist-prod
 
   docker:
     name: Build docker image
@@ -92,18 +88,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Download production build
-        uses: actions/download-artifact@v3
+      - name: Restore build artifacts
+        uses: actions/cache/restore@v3
         with:
-          name: build-prod
-          path: dist.tar.gz
-
-      - name: Extract artifacts
-        run: tar -xzvf dist.tar.gz
+          path: ./dist
+          key: dist-prod
+          restore-keys: dist-prod
 
       - name: Build docker image
         uses: ztimson/actions/docker/build@develop
-
 
       - name: Push docker image
         uses: ztimson/actions/docker/push@develop
