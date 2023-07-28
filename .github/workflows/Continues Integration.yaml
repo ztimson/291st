@@ -28,8 +28,7 @@ jobs:
     name: Install dependencies
     runs-on: Docker
     container:
-      image: docker:latest
-    shell: sh
+      image: ubuntu:latest
     steps:
 
       - uses: ztimson/actions/docker@develop
