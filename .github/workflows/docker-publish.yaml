@@ -37,6 +37,6 @@ jobs:
 
       - name: Build image
         run: docker build --no-cache -t "${{inputs.image}}:$TAG" .
-			
+
       - name: Push image
         run: docker push "${{inputs.image}}:$TAG"
