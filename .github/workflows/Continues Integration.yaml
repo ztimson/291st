@@ -92,6 +92,7 @@ jobs:
         with:
           path: dist
           key: dist-prod
+          restore-keys: dist-prod
 
       - name: Build docker image
         uses: ztimson/actions/docker/build@develop
