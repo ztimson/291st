@@ -17,7 +17,7 @@ COPY . .
 RUN if [ ! -d "dist" ] && [ ! -d "node_modules" ]; then npm install; fi
 
 # Build
-RUN BUILD_MODE=$([ "$NODE_ENV" = "prod" ] && echo "dynmaic-prod" || echo "dynamic") && \
+RUN BUILD_MODE=$([ "$NODE_ENV" = "prod" ] && echo "prod" || echo "dev") && \
 	if [ ! -d "dist" ]; then npm run "build:$BUILD_MODE"; fi
 
 # Use Nginx to serve
