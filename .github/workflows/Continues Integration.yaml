@@ -14,17 +14,16 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: node_modules
-          key: node_modules
+          key: ${{runner.os}}-node_modules
 
       - name: Install dependencies
         run: npm install
 
       - name: Cache node_modules
-        uses: actions/cache@v3
+        uses: actions/cache/save@v3
         with:
           path: ./node_modules
-          key: node_modules
-          restore-keys: node_modules
+          key: ${{runner.os}}-node_modules
 
   build-dev:
     name: Build
@@ -39,8 +38,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: ./node_modules
-          key: node_modules
-          restore-keys: node_modules
+          key: ${{runner.os}}-node_modules
 
       - name: Build sources
         run: npm run build:dev
@@ -65,8 +63,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: ./node_modules
-          key: node_modules
-          restore-keys: node_modules
+          key: ${{runner.os}}-node_modules
 
       - name: Build sources
         run: npm run build:prod
