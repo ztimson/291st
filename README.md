@@ -1,9 +1,6 @@
 # 291st JTF
 
----
-
 > "Putting the Damned to Rest"
-
 
 ![Skull Sword and Globe Emblem](./src/assets/img/logo.png)
 
@@ -12,36 +9,50 @@ This is the clan [website](https://291st.ca) for the 291st Joint Task Force.
 This project was generated using Angular 14.
 
 ## Table of Contents
-<!-- TOC -->
-* [291st JTF](#291st-jtf)
-  * [Table of Contents](#table-of-contents)
-  * [Prerequisites](#prerequisites)
-  * [Setup](#setup)
-  * [Cheatsheet](#cheatsheet)
-<!-- TOC -->
+- [291st JTF](#291st-jtf)
+  - [Table of Contents](#table-of-contents)
+  - [Stack](#stack)
+  - [Setup](#setup)
+    - [Development](#development)
+	- [Production](#produciton)
+  - [Cheatsheet](#cheatsheet)
 
-## Prerequisites
-- [NodeJS](https://nodejs.org/en/)
-- [Docker](https://docs.docker.com/install/)
+## Stack
+| Technology | Version |
+|------------|---------|
+| Node       | 16      |
+| Angular    | 14      |
+| Docker     |         |
 
 ## Setup
-The project can either be run using NPM or Docker. NPM is recommended for development.
 <details>
-<summary>NPM (Development)</summary>
+<summary>
+  <h3 style="display: inline">Development</h3>
+</summary>
 
+#### Prerequisites
+- [NodeJS](https://nodejs.org/en/)
+
+#### Instructions
 1. Install the dependencies: `npm install`
 2. Start the Angular server: `npm run start`
+3. Open [http://localhost:4200](http://localhost:4200)
 </details>
 
 <details>
-<summary>Docker (Production)</summary>
+<summary>
+  <h3 style="display: inline">Production</h3>
+</summary>
 
+#### Prerequisites
+- [Docker](https://docs.docker.com/install/)
+
+#### Instructions
 1. Build the docker image: `docker build -t 291st:<TAG> .`
 2. Start the new image: `docker run -p 4200:80 291st:<TAG>`
+3. Open [http://localhost:4200](http://localhost:4200)
 
 </details>
-
-The website should now be accessible on [http://localhost:4200](http://localhost:4200)
 
 ## Cheatsheet
 ```bash
