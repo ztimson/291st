@@ -13,9 +13,8 @@ jobs:
       - name: Restore node_modules
         uses: actions/cache/restore@v3
         with:
-          path: ./node_modules
+          path: node_modules
           key: node_modules
-          restore-keys: node_modules
 
       - name: Install dependencies
         run: npm install
@@ -91,9 +90,8 @@ jobs:
       - name: Restore build artifacts
         uses: actions/cache/restore@v3
         with:
-          path: ./dist
+          path: dist
           key: dist-prod
-          restore-keys: dist-prod
 
       - name: Build docker image
         uses: ztimson/actions/docker/build@develop
