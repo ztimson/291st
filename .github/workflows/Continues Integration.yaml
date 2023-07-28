@@ -83,12 +83,13 @@ jobs:
     container: git.zakscode.com/ztimson/runner
     steps:
 
-    #   - name: Checkout repository
-    #     uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - uses: ztimson/actions/docker@develop
+      - name: Build docker image
+        uses: ztimson/actions/docker/build@develop
+
+      - name: Push docker image
+        uses: ztimson/actions/docker/push@develop
         with:
-          image: ztimson/test
-          registry: git.zakscode.com
-          registry_user: ztimson
-          registry_pass: ${{secrets.deploy_token}}
+          registry_pass: ${{secrets.DEPLOY_TOKEN}}
