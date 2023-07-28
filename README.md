@@ -4,18 +4,18 @@
 
 ![Skull Sword and Globe Emblem](./src/assets/img/logo.png)
 
-This is the clan [website](https://291st.ca) for the 291st Joint Task Force.
-
-This project was generated using Angular 14.
-
 ## Table of Contents
 - [291st JTF](#291st-jtf)
   - [Table of Contents](#table-of-contents)
+  - [Demo](#demo)
   - [Stack](#stack)
   - [Setup](#setup)
     - [Development](#development)
 	- [Production](#produciton)
   - [Cheatsheet](#cheatsheet)
+
+## Demo
+[https://291st.ca](https://291st.ca)
 
 ## Stack
 | Technology | Version |
