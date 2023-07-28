@@ -29,8 +29,6 @@ jobs:
     runs-on: Docker
     container:
       image: docker:latest
-      volumes:
-        - /var/run/docker.sock:/var/run/docker.sock
       options: --entrypoint /bin/sh
     steps:
 
