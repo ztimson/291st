@@ -1,10 +1,8 @@
-# 291st JTF
+![291st Logo](./src/assets/img/header.png)
 
-> "Putting the Damned to Rest"
+---
 
-![Skull Sword and Globe Emblem](./src/assets/img/logo.png)
-
-This is the clan website for the "291st Joint Task Force"
+Clan website built for the _291st Joint Task Force_
 
 ## Table of Contents
 - [291st JTF](#291st-jtf)
