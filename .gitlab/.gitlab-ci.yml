@@ -3,6 +3,7 @@ image: node:16
 stages:
   - build
   - test
+  - publish
   - deploy
 
 npm:
@@ -48,7 +49,7 @@ audit:
     - if: $CI_COMMIT_BRANCH
 
 registry:
-  stage: deploy
+  stage: publish
   image: docker
   cache:
     - key: $CI_PIPELINE_ID
@@ -66,7 +67,7 @@ registry:
   allow_failure: true
 
 tag:
-  stage: deploy
+  stage: publish
   image:
     name: alpine/git
     entrypoint: [ "" ]
@@ -80,3 +81,21 @@ tag:
   rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
   allow_failure: true
+
+production:
+  stage: deploy
+  image: docker
+  cache: []
+  variables:
+    SERVICE_NAME: phone-reminders_api
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - TAG=$([ "$CI_COMMIT_BRANCH" = "$CI_DEFAULT_BRANCH" ] && echo "latest" || echo "$CI_COMMIT_BRANCH" | sed -E "s/[_/]/-/g")
+  script:
+    - docker pull "$CI_REGISTRY_IMAGE:$TAG"
+    - docker service update --force --with-registry-auth --image "$CI_REGISTRY_IMAGE:$TAG" "$SERVICE_NAME" || echo "Continuing in background"
+  allow_failure: true
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_COMMIT_BRANCH && $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH'
+      when: manual
