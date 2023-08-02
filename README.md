@@ -93,6 +93,6 @@ The technology stack consists of a front-end built with _Angular_ & is deployed 
 </details>
 
 ## License
-Copyright © ZaksCode 2023 | All Rights Reserved
+Copyright © 2023 Zakary Timson | All Rights Reserved
 
 See the [license](./LICENSE) for more information.
