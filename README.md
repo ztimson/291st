@@ -11,7 +11,7 @@
   ### 291st Joint Task Force
   
   <!-- Description -->
-  A clan website for the _291st Joint Task Force_
+  Clan website for the _291st Joint Task Force_
 
   <!-- Repo badges -->
   [![Version](https://img.shields.io/badge/dynamic/json.svg?label=Version&style=for-the-badge&url=https://git.zakscode.com/api/v1/repos/ztimson/291st/tags&query=$[0].name)](https://git.zakscode.com/ztimson/291st/tags)
@@ -32,8 +32,8 @@
 <div align="center">
   <a href="https://291st.ca" target="_blank">Demo</a>
    • <a href="https://git.zakscode.com/ztimson/291st/wiki" target="_blank">Documentation</a>
-   • <a href="https://git.zakscode.com/ztimson/template/issues/new?template=.github%2fissue_template%2fbug.md" target="_blank">Report a Bug</a>
-   • <a href="https://git.zakscode.com/ztimson/template/issues/new?template=.github%2fissue_template%2fenhancement.md" target="_blank">Feature Request</a> 
+   • <a href="https://git.zakscode.com/ztimson/291st/issues/new?template=.github%2fissue_template%2fbug.md" target="_blank">Report a Bug</a>
+   • <a href="https://git.zakscode.com/ztimson/291st/issues/new?template=.github%2fissue_template%2fenhancement.md" target="_blank">Feature Request</a> 
 </div>
 
 ---
@@ -42,8 +42,8 @@
 - [291st](#top)
   - [Demo](https://291st.ca)
   - [Documentation](https://git.zakscode.com/ztimson/291st/wiki)
-  - [Report a Bug](https://git.zakscode.com/ztimson/template/issues/new?template=.github%2fissue_template%2fbug.md)
-  - [Feature Request](https://git.zakscode.com/ztimson/template/issues/new?template=.github%2fissue_template%2fenhancement.md)
+  - [Report a Bug](https://git.zakscode.com/ztimson/291st/issues/new?template=.github%2fissue_template%2fbug.md)
+  - [Feature Request](https://git.zakscode.com/ztimson/291st/issues/new?template=.github%2fissue_template%2fenhancement.md)
 - [About](#about)
 - [Setup](#setup)
   - [Production](#production)
