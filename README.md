@@ -23,6 +23,7 @@
   [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
   [![Docker](https://img.shields.io/badge/Docker-384d54?style=for-the-badge&logo=docker)](https://docker.com/)
   [![Node](https://img.shields.io/badge/Node.js-000000?style=for-the-badge&logo=nodedotjs)](https://nodejs.org/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org/)
 
   </br>
 </div>
