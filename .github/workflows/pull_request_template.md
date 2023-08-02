@@ -1,14 +1,14 @@
 ## Description
 <!-- Adition information & context -->
-
+...
 
 ## Issues
-<!-- Issues this MR will address -->
+<!-- Issues this PR will address -->
  - closes #___
  - owner/repo#___
 
 ## Checklist
-<!-- Complete this checklist after creating the MR -->
+<!-- Compelte after creating PR -->
  - [ ] Linked issues
  - [ ] Reviewed changes
  - [ ] Updated comments/documentation
