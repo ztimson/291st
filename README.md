@@ -24,27 +24,17 @@
   [![Docker](https://img.shields.io/badge/Docker-384d54?style=for-the-badge&logo=docker)](https://docker.com/)
   [![Node](https://img.shields.io/badge/Node.js-000000?style=for-the-badge&logo=nodedotjs)](https://nodejs.org/)
   [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org/)
-
-  </br>
+  
+  <div>
+    <a href="https://291st.ca" target="_blank">Demo</a>
+  </div>
 </div>
 
----
 
-<div align="center">
-  <a href="https://291st.ca" target="_blank">Demo</a>
-   • <a href="https://git.zakscode.com/ztimson/291st/wiki" target="_blank">Documentation</a>
-   • <a href="https://git.zakscode.com/ztimson/291st/issues/new?template=.github%2fissue_template%2fbug.md" target="_blank">Report a Bug</a>
-   • <a href="https://git.zakscode.com/ztimson/291st/issues/new?template=.github%2fissue_template%2fenhancement.md" target="_blank">Feature Request</a> 
-</div>
-
----
 
 ## Table of Contents
 - [291st](#top)
   - [Demo](https://291st.ca)
-  - [Documentation](https://git.zakscode.com/ztimson/291st/wiki)
-  - [Report a Bug](https://git.zakscode.com/ztimson/291st/issues/new?template=.github%2fissue_template%2fbug.md)
-  - [Feature Request](https://git.zakscode.com/ztimson/291st/issues/new?template=.github%2fissue_template%2fenhancement.md)
 - [About](#about)
 - [Setup](#setup)
   - [Production](#production)
