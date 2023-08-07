@@ -4,7 +4,10 @@ on: [push, workflow_dispatch]
 jobs:
   dependencies:
     name: Install dependencies
-    container: node:latest
+    container:
+      image: node:latest
+      volumes:
+        - /mnt/swarm/gitea/runner/cache:/cache
     steps:
 
       - name: Checkout repository
@@ -12,7 +15,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-      - run: ls
+
+      - run: mv node_modules /cache/
 
   build-dev:
     name: Build
@@ -64,7 +68,6 @@ jobs:
 
   docker:
     name: Build docker image
-    needs: build-prod
     container: docker
     steps:
 
