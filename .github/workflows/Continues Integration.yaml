@@ -44,6 +44,8 @@ jobs:
         with:
           key: node_modules
 
+      - run: ls
+
       - name: Build sources
         run: npm run build:dev
 
