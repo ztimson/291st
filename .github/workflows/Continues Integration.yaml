@@ -18,7 +18,7 @@ jobs:
 
       - uses: ztimson/actions/cache/store@develop
         with:
-          pattern: node_modules
+          pattern: node_modules/*
 
   build-dev:
     name: Build
