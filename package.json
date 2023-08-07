@@ -5,9 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "npm run build:dev",
-    "build:dev": "npx ng build --configuration development",
-    "build:prod": "npx ng build --configuration production",
-    "watch": "npx ng build --watch --configuration development"
+    "build:dev": "ng build --configuration development",
+    "build:prod": "ng build --configuration production",
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
