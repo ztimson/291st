@@ -19,6 +19,7 @@ jobs:
       - uses: ztimson/actions/tar/compress@develop
         with:
           pattern: node_modules/*
+      - run: ls
       - run: mv archive.tar.gz /cache/
 
   build-dev:
