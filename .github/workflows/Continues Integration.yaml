@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Cache node_modules
-        uses: ztimson/actions/cache/store@develop
+        uses: ztimson/actions/cache@develop
         with:
           key: node_modules
           pattern: node_modules/*
