@@ -30,7 +30,7 @@ jobs:
   build-dev:
     name: Build
     needs: dependencies
-    container: git.zakscode.com/ztimson/runner
+    container: node:latest
     steps:
 
       - name: Checkout repository
@@ -47,7 +47,7 @@ jobs:
   build-prod:
     name: Build production
     needs: dependencies
-    container: git.zakscode.com/ztimson/runner
+    container: node:latest
     steps:
 
       - name: Checkout repository
