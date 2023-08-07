@@ -25,7 +25,7 @@ jobs:
         uses: ztimson/actions/cache@develop
         with:
           key: node_modules
-          pattern: node_modules/*
+          pattern: package-lock.json node_modules/*
 
   build-dev:
     name: Build
