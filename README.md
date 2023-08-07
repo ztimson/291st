@@ -21,13 +21,13 @@
 
 ## Table of Contents
 - [291st](#top)
-- [About](#about)
-  - [Built With](#built-with)
-- [Demo](https://291st.ca)
-- [Setup](#setup)
-  - [Production](#production)
-  - [Development](#development)
-- [License](#license)
+  - [About](#about)
+    - [Built With](#built-with)
+  - [Demo](https://291st.ca)
+  - [Setup](#setup)
+    - [Production](#production)
+    - [Development](#development)
+  - [License](#license)
 
 ## About
 
