@@ -13,10 +13,14 @@ jobs:
       - name: Checkout repository
         uses: ztimson/actions/git/checkout@develop
 
+      - name: Restore cache
+        uses: ztimson/actions/cache/restore@develop
+
       - name: Install dependencies
         run: npm install
 
-      - uses: ztimson/actions/cache/store@develop
+      - name: Cache node_modules
+        uses: ztimson/actions/cache/store@develop
         with:
           pattern: node_modules/*
 
