@@ -30,7 +30,10 @@ jobs:
   build-dev:
     name: Build
     needs: dependencies
-    container: node:latest
+    container:
+      image: node:latest
+      volumes:
+        - /mnt/swarm/gitea/runner/cache:/cache
     steps:
 
       - name: Checkout repository
