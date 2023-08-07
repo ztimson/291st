@@ -16,7 +16,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - run: mv node_modules /cache/
+      - uses: ztimson/actions/tar/compress@develop
+        with:
+          pattern: node_modules/*
+      - run: mv archive.tar.gz /cache/
 
   build-dev:
     name: Build
