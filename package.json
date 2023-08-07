@@ -5,7 +5,7 @@
     "start": "npx ng serve",
     "build": "npm run build:dev",
     "build:dev": "npx ng build --configuration development",
-    "build:prod": "npx ng build --configuration production",
+    "build:prod": "npx ng build --configuration production"
   },
   "private": true,
   "dependencies": {
