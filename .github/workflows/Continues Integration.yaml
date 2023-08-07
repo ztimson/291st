@@ -44,15 +44,19 @@ jobs:
         with:
           key: node_modules
 
-      - run: ls node_modules/@angular
+      - name: Setup Angular
+        run: npm link @angular/cli
 
-      - name: Build sources
+      - name: Compile Angular
         run: npm run build:dev
 
   build-prod:
     name: Build production
     needs: dependencies
-    container: node:latest
+    container:
+      image: node:latest
+      volumes:
+        - /mnt/swarm/gitea/runner/cache:/cache
     steps:
 
       - name: Checkout repository
@@ -63,8 +67,11 @@ jobs:
         with:
           key: node_modules
 
-      - name: Build sources
-        run: npm run build:prod
+      - name: Setup Angular
+        run: npm link @angular/cli
+
+      - name: Compile Angular
+        run: npm run build:dev
 
   docker:
     name: Build docker image
