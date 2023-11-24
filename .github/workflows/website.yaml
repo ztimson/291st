@@ -1,0 +1,22 @@
+name: Build Website
+run-name: Build Website
+
+on:
+    push:
+
+jobs:
+    build:
+        name: Build NPM Project
+        uses: ztimson/actions/.github/workflows/npm.yaml@develop
+        with:
+            repository: ${{github.server_url}}/${{github.repository}}.git
+            artifact_name: website
+            artifacts: dist
+
+    publish:
+        name: Build & Push Dockerfile
+        needs: build
+        uses: ztimson/actions/.github/workflows/docker.yaml@develop
+        with:
+            repository: ${{github.server_url}}/${{github.repository}}.git
+            pass: ${{secrets.DEPLOY_TOKEN}}
