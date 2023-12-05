@@ -48,7 +48,7 @@ It includes a list of managed servers & the _Discord_ server list.
 
 The technology stack consists of a front-end built with _Angular_ & is deployed using _Docker_.
 
-## Demo
+### Demo
 Website: https://291st.ca
 
 ### Built With
