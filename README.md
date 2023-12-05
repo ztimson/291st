@@ -16,14 +16,25 @@
   <!-- Repo badges -->
   [![Version](https://img.shields.io/badge/dynamic/json.svg?label=Version&style=for-the-badge&url=https://git.zakscode.com/api/v1/repos/ztimson/291st/tags&query=$[0].name)](https://git.zakscode.com/ztimson/291st/tags)
   [![Pull Requests](https://img.shields.io/badge/dynamic/json.svg?label=Pull%20Requests&style=for-the-badge&url=https://git.zakscode.com/api/v1/repos/ztimson/291st&query=open_pr_counter)](https://git.zakscode.com/ztimson/291st/pulls)
+  [![Issues](https://img.shields.io/badge/dynamic/json.svg?label=Issues&style=for-the-badge&url=https://git.zakscode.com/api/v1/repos/ztimson/291st&query=open_issues_count)](https://git.zakscode.com/ztimson/291st/issues)
 
+  <!-- Links -->
+
+  ---
+  <div>
+    <a href="https://git.zakscode.com/ztimson/291st/releases" target="_blank">Release Notes</a>
+    • <a href="https://git.zakscode.com/ztimson/291st/issues/new?template=.github%2fissue_template%2fbug.md" target="_blank">Report a Bug</a>
+    • <a href="https://git.zakscode.com/ztimson/291st/issues/new?template=.github%2fissue_template%2fenhancement.md" target="_blank">Request a Feature</a>
+  </div>
+
+  ---
 </div>
 
 ## Table of Contents
 - [291st](#top)
   - [About](#about)
+    - [Demo](https://291st.ca)
     - [Built With](#built-with)
-  - [Demo](https://291st.ca)
   - [Setup](#setup)
     - [Production](#production)
     - [Development](#development)
@@ -37,15 +48,15 @@ It includes a list of managed servers & the _Discord_ server list.
 
 The technology stack consists of a front-end built with _Angular_ & is deployed using _Docker_.
 
+## Demo
+Website: https://291st.ca
+
 ### Built With
 [![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular)](https://angular.io/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
 [![Docker](https://img.shields.io/badge/Docker-384d54?style=for-the-badge&logo=docker)](https://docker.com/)
 [![Node](https://img.shields.io/badge/Node.js-000000?style=for-the-badge&logo=nodedotjs)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org/)
-
-## Demo
-Website: https://291st.ca
 
 ## Setup
 
