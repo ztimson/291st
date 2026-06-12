@@ -3,9 +3,8 @@
   <br />
   
   <!-- Logo -->
-  <a href="/src/assets/img/header.png">
-  	<img src="./src/assets/img/logo.png" alt="Logo" width="200" height="200">
-  </a>
+  <img src="./public/assets/img/logo.png" alt="Logo" width="200" height="200">
+
 
   <!-- Title -->
   ### 291st Joint Task Force
