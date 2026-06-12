@@ -452,6 +452,12 @@
 				Created by <a href="https://zakscode.com" target="_blank">Zak Timson</a> | Built with <a href="https://momentum.zakscode.com" target="_blank">Momentum</a></p>
 		</footer>
 
+		<script type="module">
+			import {Momentum} from 'https://291st.com/momentum.mjs';
+			const momentum = window.momentum = new Momentum('https://291st.com', {app: 'Website'});
+			const session = momentum.auth.readSession();
+		</script>
+
 		<script>
 			// ── DYNAMIC OPS (newest first) ──
 			function getSundayOps() {
