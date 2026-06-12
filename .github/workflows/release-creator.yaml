@@ -1,0 +1,27 @@
+name: Release Bot
+
+on:
+  milestone:
+    types: [closed]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    container: node:22
+    steps:
+      - name: Checkout
+        run: |
+          git clone "$(echo ${{github.server_url}}/${{github.repository}}.git | sed s%://%://${{github.token}}@% )" .
+          git checkout ${{ github.event.repository.default_branch }}
+
+      - name: Create release
+        run: npx -y @ztimson/ai-agents@latest release
+        env:
+          AI_HOST: anthropic
+          AI_MODEL: claude-sonnet-4-5
+          AI_TOKEN: ${{ secrets.ANTHROPIC_TOKEN }}
+          GIT_HOST: ${{ github.server_url }}
+          GIT_OWNER: ${{ github.repository_owner }}
+          GIT_REPO: ${{ github.event.repository.name }}
+          GIT_TOKEN: ${{ secrets.ASSISTANT_TOKEN }}
+          MILESTONE: ${{ github.event.milestone.number }}

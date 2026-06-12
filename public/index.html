@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="291st Joint Task Force">
+		<meta name="author" content="Zak Timson">
+		<title>291st JTF</title>
+		<link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Roboto:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+		<script src="login.mjs" type="module" defer></script>
+		<style>
+			*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+			:root {
+				--red: #b10000;
+				--red-hover: #c00;
+				--dark: #202225;
+				--black: #000;
+				--max-w: 1100px;
+			}
+
+			html, body {
+				background: var(--black);
+				color: #fff;
+				font-family: Roboto, sans-serif;
+				overflow-x: hidden;
+			}
+
+			.stencil { font-family: 'Saira Stencil One', sans-serif; }
+
+			/* ── NAV ── */
+			nav {
+				position: sticky;
+				top: 0;
+				z-index: 100;
+				background: var(--dark);
+				border-bottom: 2px solid var(--red);
+				display: flex;
+				align-items: center;
+				gap: 0.25rem;
+				padding: 0 1rem;
+			}
+
+			nav a {
+				color: #aaa;
+				text-decoration: none;
+				padding: 1rem 1.25rem;
+				font-size: 0.9rem;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				border-bottom: 3px solid transparent;
+				transition: color 0.2s, border-color 0.2s;
+			}
+
+			nav a:hover, nav a.active {
+				color: #fff;
+				border-bottom-color: var(--red);
+			}
+
+			/* ── SHARED LAYOUT ── */
+			.inner {
+				max-width: var(--max-w);
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.section-wrap {
+				padding: 4rem 0;
+			}
+
+			section {
+				padding: 4rem 2rem;
+				max-width: var(--max-w);
+				margin: 0 auto;
+			}
+
+			section h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+
+			.section-divider {
+				width: 60px;
+				height: 3px;
+				background: var(--red);
+				margin-bottom: 2rem;
+			}
+
+			/* ── ABOUT ── */
+			#about p {
+				color: #ccc;
+				line-height: 1.8;
+				max-width: 720px;
+			}
+
+			.stats {
+				display: flex;
+				gap: 2rem;
+				margin-top: 2rem;
+				flex-wrap: wrap;
+			}
+
+			.stat {
+				background: var(--dark);
+				border-left: 3px solid var(--red);
+				padding: 1rem 1.5rem;
+				min-width: 140px;
+			}
+
+			.stat .num {
+				font-size: 2rem;
+				font-weight: 700;
+				color: var(--red);
+			}
+
+			.stat .label {
+				font-size: 0.8rem;
+				color: #aaa;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+			}
+
+			/* ── MISSION SET ── */
+			#mission-set { background: #0a0a0a; }
+
+			/* Force 3 cols, drop to 2 then 1 on smaller screens */
+			.services-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1rem;
+			}
+
+			@media (max-width: 700px) {
+				.services-grid { grid-template-columns: repeat(2, 1fr); }
+			}
+
+			@media (max-width: 480px) {
+				.services-grid { grid-template-columns: 1fr; }
+			}
+
+			.service-card {
+				background: var(--dark);
+				border-top: 3px solid transparent;
+				padding: 1.5rem;
+				transition: border-color 0.2s, transform 0.2s;
+			}
+
+			.service-card:hover {
+				border-top-color: var(--red);
+				transform: translateY(-3px);
+			}
+
+			.service-card .icon  { font-size: 1.6rem; margin-bottom: 0.5rem; }
+			.service-card .title { font-size: 1rem; font-weight: 500; margin-bottom: 0.25rem; }
+			.service-card .desc  { font-size: 0.82rem; color: #888; line-height: 1.5; }
+
+			/* ── OPERATIONS ── */
+			.ops-list {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+
+			.op-item {
+				display: flex;
+				gap: 1.5rem;
+				align-items: flex-start;
+				background: var(--dark);
+				padding: 1.25rem 1.5rem;
+				border-left: 4px solid var(--red);
+			}
+
+			.op-item.upcoming { border-left-color: #4caf50; }
+
+			.op-item .op-date {
+				font-size: 0.75rem;
+				color: #888;
+				white-space: nowrap;
+				padding-top: 0.2rem;
+				min-width: 90px;
+				font-family: 'Share Tech Mono', monospace;
+			}
+
+			.op-item .op-title { font-weight: 500; margin-bottom: 0.25rem; }
+			.op-item .op-desc  { font-size: 0.85rem; color: #aaa; }
+
+			.badge {
+				display: inline-block;
+				padding: 0.15rem 0.6rem;
+				font-size: 0.7rem;
+				border-radius: 2px;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				margin-left: 0.5rem;
+			}
+
+			.badge-upcoming  { background: #1a3a1a; color: #4caf50; }
+			.badge-completed { background: #1a1a2e; color: #888; }
+
+			/* ── DISCORD ── */
+			#discord { background: #050505; }
+
+			.discord-inner {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 2rem;
+				align-items: start;
+			}
+
+			@media (max-width: 700px) { .discord-inner { grid-template-columns: 1fr; } }
+
+			.discord-inner iframe { width: 100%; min-height: 420px; border: none; }
+
+			.discord-info p {
+				color: #aaa;
+				line-height: 1.7;
+				margin-bottom: 1.5rem;
+				font-size: 0.95rem;
+			}
+
+			.btn {
+				display: inline-block;
+				padding: 0.75rem 1.75rem;
+				background: var(--red);
+				color: #fff;
+				text-decoration: none;
+				font-weight: 500;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				font-size: 0.85rem;
+				transition: background 0.2s;
+			}
+
+			.btn:hover { background: var(--red-hover); }
+
+			/* ── LOCATION ── */
+			#location { background: #080808; border-top: 1px solid #111; }
+
+			.location-inner {
+				display: grid;
+				grid-template-columns: 1fr 2fr;
+				gap: 2rem;
+				align-items: center;
+			}
+
+			@media (max-width: 700px) { .location-inner { grid-template-columns: 1fr; } }
+
+			.location-info p {
+				color: #aaa;
+				line-height: 1.7;
+				font-size: 0.95rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.location-info .detail {
+				font-family: 'Share Tech Mono', monospace;
+				font-size: 0.8rem;
+				color: #555;
+				margin-top: 1rem;
+				line-height: 1.8;
+			}
+
+			#map-wrap {
+				position: relative;
+				width: 100%;
+				aspect-ratio: 16/9;
+				overflow: hidden;
+				border: 1px solid #1a1a1a;
+			}
+
+			#map-wrap iframe {
+				width: 100%;
+				height: 100%;
+				border: none;
+				filter: grayscale(1) invert(1) brightness(0.8) contrast(1.1);
+			}
+
+			.map-pin {
+				position: absolute;
+				top: 50%; left: 50%;
+				transform: translate(-50%, -100%);
+				z-index: 2;
+				pointer-events: none;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.map-pin .pin-dot {
+				width: 14px; height: 14px;
+				background: var(--red);
+				border-radius: 50%;
+				box-shadow: 0 0 0 3px rgba(177,0,0,0.3);
+				animation: pulse 2s infinite;
+			}
+
+			.map-pin .pin-line { width: 2px; height: 20px; background: var(--red); }
+
+			.map-pin .pin-label {
+				background: var(--red);
+				color: #fff;
+				font-size: 0.65rem;
+				font-family: 'Share Tech Mono', monospace;
+				letter-spacing: 0.1em;
+				padding: 0.2rem 0.5rem;
+				white-space: nowrap;
+				margin-top: 4px;
+			}
+
+			@keyframes pulse {
+				0%, 100% { box-shadow: 0 0 0 3px rgba(177,0,0,0.3); }
+				50%       { box-shadow: 0 0 0 8px rgba(177,0,0,0.1); }
+			}
+
+			/* ── FOOTER ── */
+			footer {
+				background: var(--dark);
+				border-top: 2px solid #111;
+				text-align: center;
+				padding: 1.5rem;
+				font-size: 0.85rem;
+				color: #666;
+			}
+
+			footer a, footer a:visited { color: var(--red); text-decoration: none; }
+			footer a:hover { color: var(--red-hover); }
+		</style>
+	</head>
+	<body>
+
+		<jtf-login></jtf-login>
+
+		<nav id="main-nav">
+			<a href="#about">About</a>
+			<a href="#mission-set">Mission Set</a>
+			<a href="#operations">Operations</a>
+			<a href="#discord">Discord</a>
+		</nav>
+
+		<!-- ABOUT -->
+		<section id="about">
+			<h2 class="stencil">About</h2>
+			<div class="section-divider"></div>
+			<p>
+				The 291st Joint Task Force is a casual group of gamers focused on tactical & strategical cooperative play.
+				We operate across multiple titles and timezones We run weekly operations and "book clubs" to enjoy singplayer games together.
+				If youre looking for friends to enjoy games with on a regular baisis, you came to the right place. We're recruting.
+			</p>
+			<div class="stats">
+				<div class="stat"><div class="num">291st</div><div class="label">Unit</div></div>
+				<div class="stat"><div class="num">15+</div><div class="label">Members</div></div>
+				<div class="stat"><div class="num">2015</div><div class="label">Founded</div></div>
+				<div class="stat"><div class="num">1,000+</div><div class="label">Missions</div></div>
+			</div>
+		</section>
+
+		<!-- MISSION SET -->
+		<div id="mission-set" class="section-wrap">
+			<div class="inner">
+				<h2 class="stencil">Mission Set</h2>
+				<div class="section-divider"></div>
+				<div class="services-grid">
+					<div class="service-card">
+						<div class="icon">🎮</div>
+						<div class="title">Wide Mission Set</div>
+						<div class="desc">Solo, Shooters, Strategy and MMO's</div>
+					</div>
+					<div class="service-card">
+						<div class="icon">📅</div>
+						<div class="title">Weekly Operations</div>
+						<div class="desc">Maintain high readiness at all times.</div>
+					</div>
+					<div class="service-card">
+						<div class="icon">🖥️</div>
+						<div class="title">24/7 Servers</div>
+						<div class="desc">Requisition servers for any game.</div>
+					</div>
+					<div class="service-card">
+						<div class="icon">🔒</div>
+						<div class="title">VPN Access</div>
+						<div class="desc">Private VPN access for members.</div>
+					</div>
+					<div class="service-card">
+						<div class="icon">🎬</div>
+						<div class="title">Private Media Server</div>
+						<div class="desc">REDACTED</div>
+					</div>
+					<div class="service-card">
+						<div class="icon">🌎</div>
+						<div class="title">North American</div>
+						<div class="desc">EDT timezone — All regions welcome</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- OPERATIONS -->
+		<section id="operations">
+			<h2 class="stencil">Operations</h2>
+			<div class="section-divider"></div>
+			<div class="ops-list" id="ops-list"></div>
+		</section>
+
+		<!-- DISCORD -->
+		<div id="discord" class="section-wrap">
+			<div class="inner">
+				<div class="discord-inner">
+					<div class="discord-info">
+						<h2 class="stencil">Join Us</h2>
+						<div class="section-divider"></div>
+						<p>
+							Our Discord is the nerve centre of the 291st. Briefings, op schedules, voice comms,
+							and unit announcements all live here. Active members are expected to stay connected.
+						</p>
+						<a class="btn" href="https://discord.gg/your-invite" target="_blank">Join Discord</a>
+					</div>
+					<iframe
+						src="https://discordapp.com/widget?id=399625240927404033&theme=dark"
+						allowtransparency="true"
+						sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+					</iframe>
+				</div>
+			</div>
+		</div>
+
+		<!-- LOCATION -->
+		<div id="location" class="section-wrap">
+			<div class="inner">
+				<div class="location-inner">
+					<div class="location-info">
+						<h2 class="stencil">Location</h2>
+						<div class="section-divider"></div>
+						<p>Based out of Ontario, Canada. Operating across North America on Eastern time.</p>
+						<div class="detail">
+							REGION: North America<br>
+							PROVINCE: Ontario, CA<br>
+							TIMEZONE: EDT / UTC-4<br>
+							OP TIME: Sun 14:30–18:30
+						</div>
+					</div>
+					<div id="map-wrap">
+						<iframe
+							src="https://www.openstreetmap.org/export/embed.html?bbox=-130.0%2C25.0%2C-55.0%2C55.0&layer=mapnik&marker=43.6532%2C-79.3832"
+							style="pointer-events: none;"
+							loading="lazy">
+						</iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- FOOTER -->
+		<footer>
+			<p>Copyright &copy; 291st JTF 2025 &nbsp;|&nbsp; All Rights Reserved<br>
+				Created by <a href="https://zakscode.com" target="_blank">Zak Timson</a> | Built with <a href="https://momentum.zakscode.com" target="_blank">Momentum</a></p>
+		</footer>
+
+		<script>
+			// ── DYNAMIC OPS (newest first) ──
+			function getSundayOps() {
+				const now = new Date();
+				const day = now.getDay();
+
+				const lastSunday = new Date(now);
+				lastSunday.setDate(now.getDate() - day);
+				lastSunday.setHours(14, 30, 0, 0);
+
+				const todayEnd = new Date(now);
+				todayEnd.setHours(18, 30, 0, 0);
+				const upcomingDate = (day === 0 && now < todayEnd) ? lastSunday : new Date(lastSunday);
+				if (!(day === 0 && now < todayEnd)) upcomingDate.setDate(lastSunday.getDate() + 7);
+
+				// newest first: upcoming, then prev 1, then prev 2
+				const ops = [
+					{ date: upcomingDate, upcoming: true },
+				];
+				for (let i = 1; i <= 2; i++) {
+					const d = new Date(upcomingDate);
+					d.setDate(upcomingDate.getDate() - 7 * i);
+					ops.push({ date: d, upcoming: false });
+				}
+				return ops;
+			}
+
+			function fmtDate(d) {
+				return d.toLocaleDateString('en-CA', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+			}
+
+			const list = document.getElementById('ops-list');
+			getSundayOps().forEach(op => {
+				const item = document.createElement('div');
+				item.className = 'op-item' + (op.upcoming ? ' upcoming' : '');
+				item.innerHTML = `
+        <div class="op-date">${fmtDate(op.date)}</div>
+        <div>
+          <div class="op-title">
+            Weekly Operation — Sunday Afternoon
+            ${op.upcoming ? ` <span class="badge badge-upcoming">Upcoming</span>` : ''}
+          </div>
+          <div class="op-desc">14:30 – 18:30 EDT | ${op.upcoming ? 'All squads report in, game TBD' : 'Operation Complete'}</div>
+        </div>
+      `;
+				list.appendChild(item);
+			});
+
+			// ── NAV HIGHLIGHT ──
+			const navLinks = document.querySelectorAll('nav a');
+			const observer = new IntersectionObserver(entries => {
+				entries.forEach(e => {
+					if (e.isIntersecting)
+						navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+				});
+			}, { threshold: 0.4 });
+			document.querySelectorAll('[id]').forEach(s => observer.observe(s));
+		</script>
+
+	</body>
+</html>

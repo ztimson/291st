@@ -1,5 +1,5 @@
 ## Description
-<!-- Adition information & context -->
+<!-- Addition information & context -->
 ...
 
 ## Issues
@@ -8,8 +8,6 @@
 - owner/repo#___
 
 ## Checklist
-<!-- Compelte after creating PR -->
-- [ ] Linked issues
-- [ ] Reviewed changes
+<!-- Complete after creating PR -->
+- [ ] Reviewed changes (or use `Review/AI` label)
 - [ ] Updated comments/documentation
- 

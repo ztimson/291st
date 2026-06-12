@@ -1,0 +1,29 @@
+name: Code review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    container: node:22
+    steps:
+      - name: Fetch code
+        run: |
+          git clone "$(echo ${{github.server_url}}/${{github.repository}}.git | sed s%://%://${{github.token}}@% )" .
+          git checkout ${{ github.event.pull_request.head.sha }}
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+
+      - name: Create review
+        run: npx -y -p @ztimson/ai-agents@latest review $GITHUB_WORKSPACE
+        env:
+          AI_HOST: anthropic
+          AI_MODEL: claude-sonnet-4-5
+          AI_TOKEN: ${{ secrets.ANTHROPIC_TOKEN }}
+          GIT_HOST: ${{ github.server_url }}
+          GIT_OWNER: ${{ github.repository_owner }}
+          GIT_REPO: ${{ github.event.repository.name }}
+          GIT_TOKEN: ${{ secrets.ASSISTANT_TOKEN }}
+          GIT_BRANCH: origin/${{ github.event.pull_request.base.ref }}
+          PULL_REQUEST: ${{ github.event.pull_request.number }}

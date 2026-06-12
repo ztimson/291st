@@ -44,19 +44,12 @@
 
 This website was created for the _291st Joint Task Force_ to act as a simple landing page for their domain.
 
-It includes a list of managed servers & the _Discord_ server list.
-
-The technology stack consists of a front-end built with _Angular_ & is deployed using _Docker_.
-
 ### Demo
 Website: https://291st.ca
 
 ### Built With
-[![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular)](https://angular.io/)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
 [![Docker](https://img.shields.io/badge/Docker-384d54?style=for-the-badge&logo=docker)](https://docker.com/)
-[![Node](https://img.shields.io/badge/Node.js-000000?style=for-the-badge&logo=nodedotjs)](https://nodejs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org/)
+[![Momentum](https://img.shields.io/badge/Momentum-4c7bbc?style=for-the-badge)](https://momentum.zakscode.com)
 
 ## Setup
 
