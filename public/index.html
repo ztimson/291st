@@ -17,6 +17,10 @@
 				--dark: #202225;
 				--black: #000;
 				--max-w: 1100px;
+				--theme-primary: var(--red);
+				--theme-primary-contrast: white;
+				--theme-accent: var(--red);
+				--theme-accent-contrast: white;
 			}
 
 			html, body {
@@ -35,17 +39,21 @@
 				z-index: 100;
 				background: var(--dark);
 				border-bottom: 2px solid var(--red);
+			}
+
+			nav .inner {
 				display: flex;
 				align-items: center;
+				flex-wrap: wrap;
 				gap: 0.25rem;
-				padding: 0 1rem;
+				padding: 0 2rem;
 			}
 
 			nav a {
 				color: #aaa;
 				text-decoration: none;
-				padding: 1rem 1.25rem;
-				font-size: 0.9rem;
+				padding: 0.75rem 0.75rem;
+				font-size: 0.8rem;
 				letter-spacing: 0.05em;
 				text-transform: uppercase;
 				border-bottom: 3px solid transparent;
@@ -61,7 +69,7 @@
 			.inner {
 				max-width: var(--max-w);
 				margin: 0 auto;
-				padding: 0 2rem;
+				padding: 0;
 			}
 
 			.section-wrap {
@@ -120,7 +128,6 @@
 			/* ── MISSION SET ── */
 			#mission-set { background: #0a0a0a; }
 
-			/* Force 3 cols, drop to 2 then 1 on smaller screens */
 			.services-grid {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
@@ -138,7 +145,10 @@
 			.service-card {
 				background: var(--dark);
 				border-top: 3px solid transparent;
-				padding: 1.5rem;
+				padding: 1.25rem;
+				display: flex;
+				align-items: flex-start;
+				gap: 1rem;
 				transition: border-color 0.2s, transform 0.2s;
 			}
 
@@ -147,7 +157,16 @@
 				transform: translateY(-3px);
 			}
 
-			.service-card .icon  { font-size: 1.6rem; margin-bottom: 0.5rem; }
+			.service-card .icon {
+				font-size: 1.6rem;
+				flex-shrink: 0;
+			}
+
+			.service-card .text {
+				display: flex;
+				flex-direction: column;
+			}
+
 			.service-card .title { font-size: 1rem; font-weight: 500; margin-bottom: 0.25rem; }
 			.service-card .desc  { font-size: 0.82rem; color: #888; line-height: 1.5; }
 
@@ -170,12 +189,20 @@
 			.op-item.upcoming { border-left-color: #4caf50; }
 
 			.op-item .op-date {
+				display: flex;
+				flex-direction: column;
+				gap: 0.2rem;
 				font-size: 0.75rem;
 				color: #888;
 				white-space: nowrap;
 				padding-top: 0.2rem;
-				min-width: 90px;
+				min-width: 110px;
 				font-family: 'Share Tech Mono', monospace;
+			}
+
+			.op-item .op-date .op-time {
+				color: var(--red);
+				font-size: 0.7rem;
 			}
 
 			.op-item .op-title { font-weight: 500; margin-bottom: 0.25rem; }
@@ -328,10 +355,12 @@
 		<jtf-login></jtf-login>
 
 		<nav id="main-nav">
-			<a href="#about">About</a>
-			<a href="#mission-set">Mission Set</a>
-			<a href="#operations">Operations</a>
-			<a href="#discord">Discord</a>
+			<div class="inner">
+				<a href="#about">About</a>
+				<a href="#mission-set">Mission Set</a>
+				<a href="#operations">Operations</a>
+				<a href="#discord">Discord</a>
+			</div>
 		</nav>
 
 		<!-- ABOUT -->
@@ -359,33 +388,45 @@
 				<div class="services-grid">
 					<div class="service-card">
 						<div class="icon">🎮</div>
-						<div class="title">Wide Mission Set</div>
-						<div class="desc">Solo, Shooters, Strategy and MMO's</div>
+						<div class="text">
+							<div class="title">Wide Mission Set</div>
+							<div class="desc">Solo, Shooters, Strategy and MMO's</div>
+						</div>
 					</div>
 					<div class="service-card">
 						<div class="icon">📅</div>
-						<div class="title">Weekly Operations</div>
-						<div class="desc">Maintain high readiness at all times.</div>
+						<div class="text">
+							<div class="title">Weekly Operations</div>
+							<div class="desc">Maintain high readiness at all times.</div>
+						</div>
 					</div>
 					<div class="service-card">
 						<div class="icon">🖥️</div>
-						<div class="title">24/7 Servers</div>
-						<div class="desc">Requisition servers for any game.</div>
+						<div class="text">
+							<div class="title">24/7 Servers</div>
+							<div class="desc">Requisition servers for any game.</div>
+						</div>
 					</div>
 					<div class="service-card">
 						<div class="icon">🔒</div>
-						<div class="title">VPN Access</div>
-						<div class="desc">Private VPN access for members.</div>
+						<div class="text">
+							<div class="title">VPN Access</div>
+							<div class="desc">Private VPN access for members.</div>
+						</div>
 					</div>
 					<div class="service-card">
 						<div class="icon">🎬</div>
-						<div class="title">Private Media Server</div>
-						<div class="desc">REDACTED</div>
+						<div class="text">
+							<div class="title">Private Media Server</div>
+							<div class="desc">REDACTED</div>
+						</div>
 					</div>
 					<div class="service-card">
 						<div class="icon">🌎</div>
-						<div class="title">North American</div>
-						<div class="desc">EDT timezone — All regions welcome</div>
+						<div class="text">
+							<div class="title">North American</div>
+							<div class="desc">EDT timezone — All regions welcome</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -473,7 +514,6 @@
 				const upcomingDate = (day === 0 && now < todayEnd) ? lastSunday : new Date(lastSunday);
 				if (!(day === 0 && now < todayEnd)) upcomingDate.setDate(lastSunday.getDate() + 7);
 
-				// newest first: upcoming, then prev 1, then prev 2
 				const ops = [
 					{ date: upcomingDate, upcoming: true },
 				];
@@ -494,15 +534,18 @@
 				const item = document.createElement('div');
 				item.className = 'op-item' + (op.upcoming ? ' upcoming' : '');
 				item.innerHTML = `
-        <div class="op-date">${fmtDate(op.date)}</div>
-        <div>
-          <div class="op-title">
-            Weekly Operation — Sunday Afternoon
-            ${op.upcoming ? ` <span class="badge badge-upcoming">Upcoming</span>` : ''}
-          </div>
-          <div class="op-desc">14:30 – 18:30 EDT | ${op.upcoming ? 'All squads report in, game TBD' : 'Operation Complete'}</div>
-        </div>
-      `;
+            <div class="op-date">
+                <span>${fmtDate(op.date)}</span>
+                <span class="op-time">14:30 – 18:30 EDT</span>
+            </div>
+            <div>
+                <div class="op-title">
+                    Weekly Operation — Sunday Afternoon
+                    ${op.upcoming ? `<span class="badge badge-upcoming">Upcoming</span>` : ''}
+                </div>
+                <div class="op-desc">${op.upcoming ? 'All squads report in, game TBD' : 'Operation Complete'}</div>
+            </div>
+        `;
 				list.appendChild(item);
 			});
 
